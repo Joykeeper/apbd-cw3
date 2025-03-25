@@ -1,24 +1,23 @@
 namespace Cwiczenie3;
 
-public class GasKontener: Kontener
+public class GasKontener: Kontener, IHazardNotifier
 {
-    static int GasKontenerCount = 0;
     
-    private float pressure;
+    public double Pressure { get; }
 
-    public GasKontener(float weightOfBaggage, float height, float depth, float maxWeight, float pressure) :
-        base(weightOfBaggage, height, depth, GasKontenerCount++, "G", maxWeight)
+    public GasKontener(double maxLoad, double pressure) : base("G", maxLoad, 200, 150, 500)
     {
-        this.pressure = pressure;
+        Pressure = pressure;
     }
 
-    public override void extractBaggage()
+    public override void Unload()
     {
-        
+        Console.WriteLine("Unloading gas container " + SerialNumber);
+        CurrentLoad *= 0.05;
     }
-
-    public override void loadBaggage(string baggage)
+    
+    public void NotifyHazard(string message)
     {
-
+        Console.WriteLine($"HAZARD in {SerialNumber}: " + message);
     }
 }

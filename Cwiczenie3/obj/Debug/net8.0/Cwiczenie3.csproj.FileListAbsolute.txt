@@ -12,3 +12,18 @@ Z:\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\refint\Cwiczenie3.dll
 Z:\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.pdb
 Z:\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.genruntimeconfig.cache
 Z:\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\ref\Cwiczenie3.dll
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\bin\Debug\net8.0\Cwiczenie3.exe
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\bin\Debug\net8.0\Cwiczenie3.deps.json
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\bin\Debug\net8.0\Cwiczenie3.runtimeconfig.json
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\bin\Debug\net8.0\Cwiczenie3.dll
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\bin\Debug\net8.0\Cwiczenie3.pdb
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.AssemblyInfoInputs.cache
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.AssemblyInfo.cs
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.csproj.CoreCompileInputs.cache
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.sourcelink.json
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.dll
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\refint\Cwiczenie3.dll
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.pdb
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\Cwiczenie3.genruntimeconfig.cache
+D:\Learning\University\IV semester\APBD\Cwiczenie3\Cwiczenie3\obj\Debug\net8.0\ref\Cwiczenie3.dll

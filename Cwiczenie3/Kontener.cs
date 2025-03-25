@@ -2,25 +2,45 @@ namespace Cwiczenie3;
 
 public abstract class Kontener
 {
-    private float weightOfBaggage;
+    public double CurrentLoad {get; set;}
     private float height;
-    private float weightOfSelf;
+    public double WeightOfSelf;
     private float depth;
+
+    public string SerialNumber { get; }
+
+    public double MaxLoad { get; }
     
-    private string serialNumber;
+    private static int counter = 1;
 
-    private float maxWeight;
-
-    public Kontener(float weightOfBaggage, float height, float depth, int serialNumber, string typeOfContainer, float maxWeight)
+    public Kontener(string type, double maxLoad, float height, float depth, double weightOfSelf)
     {
-        this.weightOfBaggage = weightOfBaggage;
+        this.CurrentLoad = 0;
         this.height = height;
         this.depth = depth;
-        this.serialNumber = "KON-" + serialNumber + "-" + typeOfContainer;
-        this.maxWeight = maxWeight;
+        this.SerialNumber = $"KON-{type}-{counter++}";
+        this.MaxLoad = maxLoad;
+        this.WeightOfSelf = weightOfSelf;
     }
 
-    public abstract void extractBaggage();
-    public abstract void loadBaggage(string baggage);
+    public virtual void Unload()
+    {
+        CurrentLoad = 0;
+        Console.WriteLine("Unloaded container " + SerialNumber);
+
+    }
+    public virtual void Load(double mass)
+    {
+        Console.WriteLine("Loading container " + SerialNumber);
+        
+        if (CurrentLoad + mass > MaxLoad)
+            throw new OverfillException($"Container {SerialNumber} overfilled!");
+        CurrentLoad += mass;
+    }
+    
+    public override string ToString()
+    {
+        return $"Serial: {SerialNumber}, Load: {CurrentLoad}/{MaxLoad}";
+    }
     
 }
