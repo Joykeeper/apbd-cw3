@@ -8,135 +8,23 @@ public class ContainerHandler
     private int MaxSpeed;
     private int MaxKonteners;
     private int MaxWeight;
-
-    // public static void Main()
-    // {
-    //     Console.WriteLine("Starting ContainerHandler Tests...");
-    //
-    //     ContainerHandler ship1 = new ContainerHandler(30, 5, 10000);
-    //     ContainerHandler ship2 = new ContainerHandler(25, 5, 800);
-    //
-    //     // Creating Containers
-    //     var liquidContainer = ship1.CreateLiquidKontener(500, true);
-    //     var gasContainer = ship1.CreateGasKontener(700, 10);
-    //     
-    //     FreezingKontener freezingContainer = null;
-    //     try
-    //     {
-    //         freezingContainer = ship1.CreateFreezingKontener(600, "Fish", -18f);
-    //     }
-    //     catch (WrongTemperatureException e)
-    //     {
-    //         Console.WriteLine($"Temperature error: {e.Message}");
-    //     }
-    //     freezingContainer = ship1.CreateFreezingKontener(600, "Fish", 2);
-    //
-    //
-    //     // Testing Loading Containers
-    //     try
-    //     {
-    //         ship1.LoadKontener(liquidContainer, 200);
-    //         ship1.LoadKontener(gasContainer, 300);
-    //         if (freezingContainer != null)
-    //             ship1.LoadKontener(freezingContainer, 400);
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e.Message);
-    //     }
-    //
-    //     // Testing Adding Containers to Ship
-    //     try
-    //     {
-    //         ship1.PutKontener(liquidContainer);
-    //         ship1.PutKontener(gasContainer);
-    //         if (freezingContainer != null)
-    //             ship1.PutKontener(freezingContainer);
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e.Message);
-    //     }
-    //
-    //     // Testing Unloading
-    //     ship1.UnloadKontener(liquidContainer);
-    //     ship1.UnloadKontener(gasContainer);
-    //     if (freezingContainer != null)
-    //         ship1.UnloadKontener(freezingContainer);
-    //     
-    //     // Testing Gas Container
-    //     Console.WriteLine("Before Unloading Gas Container: " + gasContainer);
-    //     gasContainer.Unload();
-    //     Console.WriteLine("After Unloading Gas Container: " + gasContainer);
-    //
-    //     // Testing Substituting Containers
-    //     try
-    //     {
-    //         var newFreezingContainer = ship1.CreateFreezingKontener(650, "Meat", -15);
-    //         ship1.SubstituteKontener(freezingContainer?.SerialNumber ?? "", newFreezingContainer);
-    //     }
-    //     catch (WrongTemperatureException e)
-    //     {
-    //         Console.WriteLine($"Temperature error: {e.Message}");
-    //     }
-    //
-    //     // Testing Hazard Notification
-    //     try
-    //     {
-    //         ship2.LoadKontener("KON-L-1", 200);
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e.Message);
-    //     }
-    //
-    //     // Testing Transport Between Ships
-    //     try
-    //     {
-    //         ship1.TransportKontenerToShip(ship2, liquidContainer.SerialNumber);
-    //         ship1.TransportKontenerToShip(ship2, gasContainer.SerialNumber);
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Console.WriteLine(e.Message);
-    //     }
-    //     
-    //     // Testing Ship Overload Exception
-    //     try
-    //     {
-    //         ship2.LoadKontener(freezingContainer, 500);
-    //     }
-    //     catch (ShipOverloadException e)
-    //     {
-    //         Console.WriteLine("Ship Overload Exception Caught: " + e.Message);
-    //     }
-    //     
-    //     if (freezingContainer != null)
-    //         ship1.TransportKontenerToShip(ship2, freezingContainer.SerialNumber);
-    //
-    //     // Printing Ship Status
-    //     Console.WriteLine("Ship 1 status:");
-    //     Console.WriteLine(ship1);
-    //     ship1.PrintContainers();
-    //     
-    //     Console.WriteLine("Ship 2 status:");
-    //     Console.WriteLine(ship2);
-    //     ship2.PrintContainers();
-    // }
-    
     
     public static void Main(string[] args)
         {
             ContainerHandler ship = new ContainerHandler(100, 5, 1000);
 
-            // Creating different types of containers
+            // 1. Test CreateKontener (Liquid, Gas, Freezing)
             Kontener liquidContainer = ship.CreateKontener(TypeOfKontener.LIQUID);
             Kontener gasContainer = ship.CreateKontener(TypeOfKontener.GAS);
             Kontener freezingContainer = ship.CreateKontener(TypeOfKontener.FREEZING);
-            
-            Console.WriteLine(ship);
 
-            // Test putting containers on the ship
+            Console.WriteLine("Created containers:");
+            Console.WriteLine(liquidContainer);
+            Console.WriteLine(gasContainer);
+            Console.WriteLine(freezingContainer);
+
+            // 2. Test PutKontener (Add containers to ship)
+            Console.WriteLine("\nTest putting containers on the ship:");
             try
             {
                 ship.PutKontener(liquidContainer);
@@ -147,11 +35,10 @@ public class ContainerHandler
             {
                 Console.WriteLine($"Error while putting containers: {ex.Message}");
             }
-            
-            Console.WriteLine("\nShip state after adding containers:");
             Console.WriteLine(ship);
 
-            // Test loading mass into containers
+            // 3. Test LoadKontener (Load mass into containers)
+            Console.WriteLine("\nTest loading mass into containers:");
             try
             {
                 ship.LoadKontener(liquidContainer, 150);
@@ -162,49 +49,137 @@ public class ContainerHandler
             {
                 Console.WriteLine($"Error while loading containers: {ex.Message}");
             }
-            
-            Console.WriteLine("\nShip state after loading containers:");
             Console.WriteLine(ship);
 
-            // Test unloading a container
+            // 4. Test RemoveKontener (By object)
+            Console.WriteLine("\nTest removing container by object:");
             try
             {
-                ship.UnloadKontener(liquidContainer);
-                Console.WriteLine($"Unloaded container: {liquidContainer.SerialNumber}");
+                ship.RemoveKontener(liquidContainer);
+                Console.WriteLine($"Removed container: {liquidContainer.SerialNumber}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while removing container: {ex.Message}");
+            }
+            Console.WriteLine(ship);
+
+            // 5. Test RemoveKontener (By serial number)
+            Console.WriteLine("\nTest removing container by serial number:");
+            try
+            {
+                ship.RemoveKontener(gasContainer.SerialNumber);
+                Console.WriteLine($"Removed container by serial number: {gasContainer.SerialNumber}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while removing container: {ex.Message}");
+            }
+            Console.WriteLine(ship);
+
+            // 6. Test UnloadKontener (Unload a container)
+            Console.WriteLine("\nTest unloading container:");
+            try
+            {
+                ship.UnloadKontener(freezingContainer);
+                Console.WriteLine($"Unloaded container: {freezingContainer.SerialNumber}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error while unloading container: {ex.Message}");
             }
-            
-            Console.WriteLine("\nShip state after unloading a container:");
             Console.WriteLine(ship);
 
-            // Test transporting container to another ship
+            // 7. Test TransportKontenerToShip (Transport container between ships)
             ContainerHandler anotherShip = new ContainerHandler(100, 5, 1000);
+            Kontener k = ship.CreateKontener(TypeOfKontener.LIQUID);
+            k.Load(200);
+            ship.PutKontener(k);
+            Console.WriteLine("\nTest transporting container to another ship:");
             try
             {
-                ship.TransportKontenerToShip(liquidContainer, anotherShip);
-                Console.WriteLine($"Transported container {liquidContainer.SerialNumber} to another ship.");
+                ship.TransportKontenerToShip(k, anotherShip);
+                Console.WriteLine($"Transported container {k.SerialNumber} to another ship.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error while transporting container: {ex.Message}");
             }
-            
-            Console.WriteLine("\nShip states after transporting container:");
+            Console.WriteLine("\nShip states after transport:");
             Console.WriteLine(ship);
             Console.WriteLine(anotherShip);
 
-            // Test exception handling: overload the ship
+            // 8. Test PutKontener (Exceeding ship capacity)
+            Console.WriteLine("\nTest exceeding ship capacity when adding containers:");
             try
             {
-                ship.LoadKontener(gasContainer, 2000); // Try to overload the ship
+                ContainerHandler overloadedShip = new ContainerHandler(100, 5, 100);
+                overloadedShip.PutKontener(liquidContainer);
+                overloadedShip.PutKontener(gasContainer);
+                overloadedShip.PutKontener(freezingContainer);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while exceeding ship capacity: {ex.Message}");
+            }
+
+            // 9. Test ShipOverloadException (Overload the ship)
+            Console.WriteLine("\nTest ship overload:");
+            try
+            {
+                ship.LoadKontener(gasContainer, 2000);
             }
             catch (ShipOverloadException ex)
             {
                 Console.WriteLine($"Ship overload exception: {ex.Message}");
             }
+
+            // 10. Test loading over container's capacity (Liquid container overfill)
+            Console.WriteLine("\nTest liquid container overfill:");
+            try
+            {
+                ship.LoadKontener(liquidContainer, 300);
+            }
+            catch (OverfillException ex)
+            {
+                Console.WriteLine($"Overfill exception: {ex.Message}");
+            }
+
+            // 11. Test LiquidKontener hazard notification
+            Console.WriteLine("\nTest LiquidKontener hazard notification:");
+            LiquidKontener hazardousContainer = ship.CreateLiquidKontener(400, true);
+            try
+            {
+                hazardousContainer.Load(250); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            // 12. Test WrongTemperatureException (Freezing container with incorrect temperature)
+            Console.WriteLine("\nTest FreezingKontener temperature exception:");
+            try
+            {
+                FreezingKontener wrongTempContainer = new FreezingKontener(300, "Bananas", 10f);
+            }
+            catch (WrongTemperatureException ex)
+            {
+                Console.WriteLine($"Wrong temperature exception: {ex.Message}");
+            }
+
+            // 13. Test UnloadKontener by serial number
+            Console.WriteLine("\nTest unloading container by serial number:");
+            try
+            {
+                ship.UnloadKontener(gasContainer.SerialNumber);
+                Console.WriteLine($"Unloaded container with serial: {gasContainer.SerialNumber}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error while unloading container by serial: {ex.Message}");
+            }
+            Console.WriteLine(ship);
         }
     public ContainerHandler(int maxSpeed, int maxKontenerCount, int maxWeight)
     {
